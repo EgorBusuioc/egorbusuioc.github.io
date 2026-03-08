@@ -79,6 +79,7 @@ body {
 /* ===== NAVIGATION ===== */
 .navigation {
     position: fixed;
+    opacity: 0;
     top: 0;
     left: 0;
     width: 100%;
@@ -212,6 +213,7 @@ body {
 }
 
 .hero-title {
+    opacity: 0;
     font-family: 'SpaceGrotesk', serif;
     font-size: 80px;
     font-weight: 300;
