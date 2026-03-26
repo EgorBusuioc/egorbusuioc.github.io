@@ -458,6 +458,131 @@ body {
 .btn-link:active {
     transform: translateX(5px);
 }
+dialog {
+    outline: none;
+    border: none;
+    padding: 0;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 700px;
+    background: #ffffff;
+    box-shadow: 0 30px 80px rgba(5, 14, 60, 0.18);
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+dialog::backdrop {
+    background: rgba(5, 14, 60, 0.5);
+    backdrop-filter: blur(6px);
+}
+
+/* ─── Inner ───────────────────────────────────────── */
+.dialog-inner {
+    outline: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ─── Close ───────────────────────────────────────── */
+.dialog-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: rgba(5, 14, 60, 0.35);
+    transition: color 0.2s ease;
+    z-index: 10;
+    padding: 0;
+    line-height: 1;
+}
+
+button.dialog-close {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    color: #66FCF1;
+}
+
+/* ─── Preview ─────────────────────────────────────── */
+.dialog-preview {
+    outline: none;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+    background: #f0f4ff;
+}
+
+.dialog-preview video {
+    width: 100%;
+    outline: none;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.dialog-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+/* ─── Body ────────────────────────────────────────── */
+.dialog-body {
+    padding: 28px 32px 0;
+}
+
+.dialog-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.dialog-body p {
+    font-family: 'SpaceGrotesk', serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(5, 14, 60, 0.75);
+    line-height: 1.65;
+    margin: 0 0 10px;
+}
+
+.dialog-stack {
+    font-family: 'SpaceGrotesk', serif;
+    font-size: 13px;
+    color: #00c8c8 !important;
+    font-weight: 400;
+}
+
+/* ─── Footer ──────────────────────────────────────── */
+.dialog-footer {
+    padding: 20px 32px 28px;
+    border-top: 1px solid rgba(5, 14, 60, 0.08);
+    margin-top: 20px;
+}
+
+/* ─── Mobile ──────────────────────────────────────── */
+@media (max-width: 600px) {
+    dialog {
+        max-width: calc(100% - 24px);
+        border-radius: 12px;
+    }
+
+    .dialog-preview { height: 200px; }
+    .dialog-body { padding: 20px 20px 0; }
+    .dialog-footer { padding: 16px 20px 22px; }
+    .dialog-body h2 { font-size: 21px; }
+    .dialog-header { flex-wrap: wrap; gap: 10px; }
+}
 
 /* ===== PROFESSIONAL SECTION ===== */
 .professional-section {
