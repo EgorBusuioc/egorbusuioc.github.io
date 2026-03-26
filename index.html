@@ -110,10 +110,36 @@
                 <div class="project-title">FuldaConnect</div>
                 <div class="project-status">In progress</div>
                 <div class="project-description">University Project - A comprehensive solution for our university.</div>
-                <div class="project-technologies">Python, FastAPI, React, PostgreSQL, AWS, Docker</div>
+                <div class="project-technologies">Python, FastAPI, React, PostgreSQL, AWS, Docker, GSAP</div>
                 <div class="project-link">
-                    <a class="btn-link">Unavailable</a>
+                    <a href="#" class="btn-link" data-dialog="fuldaDialog">View Project →</a>
                 </div>
+                <dialog id="fuldaDialog">
+                    <div class="dialog-inner">
+                        <button class="dialog-close" id="closeFuldaDialog">✕</button>
+                        <div class="dialog-preview">
+                            <video autoplay loop muted playsinline>
+                                <source src="./video/fuldaconnect.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div class="dialog-body">
+                            <div class="project-title">FuldaConnect</div>
+                            <p>
+                                FuldaConnect is a university project that brings together GSAP animations, canvas-based visuals, a full ticket‑resale system, friendship features, chat functionality, and much more - all of which make it a well‑crafted and truly unique platform.
+                            </p>
+                            <p class="dialog-stack">Python, FastAPI, React, PostgreSQL, AWS, Docker, GSAP</p>
+                        </div>
+                        <div class="dialog-footer">
+                            <a
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="btn-link"
+                            >
+                                I'm sorry, repository is private...
+                            </a>
+                        </div>
+                    </div>
+                </dialog>
             </div>
             <div class="project-elem">
                 <div class="project-title">IETEC CDC</div>
@@ -134,8 +160,32 @@
                 </div>
                 <div class="project-technologies">Java, Spring, PostgreSQL, GCP, GSAP</div>
                 <div class="project-link">
-                    <a href="https://github.com/EgorBusuioc/BikeShop" class="btn-link" target="_blank">View Project →</a>
+                    <a href="#" class="btn-link" data-dialog="bikeShopDialog">View Project →</a>
                 </div>
+                <dialog id="bikeShopDialog">
+                    <div class="dialog-inner">
+                        <button class="dialog-close" id="closeBikeShopDialog">✕</button>
+                        <div class="dialog-preview">
+                            <img src="./images/bikeshop.png" alt="BikeShop Preview" />
+                        </div>
+                        <div class="dialog-body">
+                            <div class="project-title">BikeShop</div>
+                            <p>
+                                Modern online bike shop with intelligent recommendations based on terrain and location. </p>
+                            <p class="dialog-stack">Java, Spring, PostgreSQL, GCP, GSAP</p>
+                        </div>
+                        <div class="dialog-footer">
+                            <a
+                                    href="https://github.com/EgorBusuioc/BikeShop"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="btn-link"
+                            >
+                                Go To GitHub →
+                            </a>
+                        </div>
+                    </div>
+                </dialog>
             </div>
         </div>
     </div>
@@ -364,4 +414,29 @@
         })();
     };
     noise();
+
+    const fuldaDialog = document.getElementById('fuldaDialog');
+    const closeFuldaBtn = document.getElementById('closeFuldaDialog');
+
+    document.querySelectorAll('[data-dialog]').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById(trigger.dataset.dialog).showModal();
+        });
+    });
+
+    closeFuldaBtn.addEventListener('click', () => fuldaDialog.close());
+
+    fuldaDialog.addEventListener('click', (e) => {
+        if (e.target === fuldaDialog) fuldaDialog.close();
+    });
+
+    const bikeShopDialog = document.getElementById('bikeShopDialog');
+    const closeBikeShopBtn = document.getElementById('closeBikeShopDialog');
+
+    closeBikeShopBtn.addEventListener('click', () => bikeShopDialog.close());
+
+    bikeShopDialog.addEventListener('click', (e) => {
+        if (e.target === bikeShopDialog) bikeShopDialog.close();
+    });
 </script>
