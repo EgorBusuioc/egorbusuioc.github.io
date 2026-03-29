@@ -22,67 +22,35 @@ window.addEventListener('scroll', () => {
         navLinks.forEach(link => link.classList.remove('scrolled'));
     }
 });
-
+document.getElementById('word').textContent = '';
 const words = ["Java", "JavaEE", "Spring", "Kafka", "Docker", "AWS", "FastAPI", "Angular", "TypeScript", "PostgreSQL", "Redis", "Terraform"];
-const wordEl = document.getElementById("word");
 
-let index = 0;
-let isAnimating = false;
-let intervalId = null;
-let isPaused = false;
-
-function initFirstWord() {
-    wordEl.textContent = words[index];
-    wordEl.style.transition = "opacity 0.4s ease, transform 0.4s ease";
-    wordEl.style.opacity = 1;
-    wordEl.style.transform = "translateY(0)";
-    index = 1;
-}
-
-initFirstWord();
-
-function showWord() {
-    if (isAnimating || isPaused) return;
-    isAnimating = true;
-
-    wordEl.style.opacity = 0;
-    wordEl.style.transform = "translateY(-10px)";
-
-    setTimeout(() => {
-        wordEl.textContent = words[index];
-
-        wordEl.style. transition = "none";
-        wordEl.style.transform = "translateY(10px)";
-
-        requestAnimationFrame(() => {
-            wordEl.style.transition = "opacity 0.4s ease, transform 0.4s ease";
-            wordEl.style. opacity = 1;
-            wordEl.style.transform = "translateY(0)";
-        });
-
-        index = (index + 1) % words.length;
-        isAnimating = false;
-    }, 400);
-}
-
-wordEl.textContent = words[0];
-wordEl.style.opacity = 1;
-wordEl.style.transform = "translateY(0)";
-
-intervalId = setInterval(showWord, 3000);
+const typed = new Typed('#word', {
+    strings: words,
+    typeSpeed: 130,
+    backSpeed: 70,
+    showCursor: true,
+    startDelay: 0,
+    cursorChar: "|",
+    loop: true,
+    contentType: 'html'
+});
 
 const glassBox = document.querySelector('.glass-box');
+let isPaused = false;
 
 glassBox.addEventListener('mouseenter', () => {
     isPaused = true;
+    typed.stop();
     glassBox.style.borderColor = '#66FCF1';
-    glassBox. style.transform = 'scale(1.02)';
+    glassBox.style.transform = 'scale(1.02)';
     glassBox.style.boxShadow = '0 8px 40px rgba(102, 252, 241, 0.3)';
 });
 
 glassBox.addEventListener('mouseleave', () => {
     isPaused = false;
-    glassBox. style.borderColor = 'rgba(5, 14, 60, 0.38)';
+    typed.start();
+    glassBox.style.borderColor = 'rgba(5, 14, 60, 0.38)';
     glassBox.style.transform = 'scale(1)';
-    glassBox.style. boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
+    glassBox.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
 });

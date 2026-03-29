@@ -315,7 +315,7 @@ body {
     font-weight: 300;
     width: 350px;
     height: 75px;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
     display: flex;
     align-items: center;
@@ -323,21 +323,9 @@ body {
 }
 
 #word {
-    position: absolute;
-    opacity: 0;
-    transform: translateX(-50%) translateY(10px);
-}
-
-#word::before {
-    content: '« ';
-    color: #050E3C;
-    font-weight: 600;
-}
-
-#word::after {
-    content: ' »';
-    color: #050E3C;
-    font-weight: 600;
+    opacity: 1;
+    position: relative;
+    transform: none;
 }
 
 /* ===== PROJECTS SECTION ===== */
